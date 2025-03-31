@@ -1,0 +1,44 @@
+{% extends 'blockchain_app/base.html' %}
+{% block title %}Цепочка блоков{% endblock %}
+{% block content %}
+<h2>Цепочка блоков</h2>
+{% for block in chain %}
+<div class="mb-4 p-3 rounded border border-info block">
+    <h5>Блок #{{ block.index }}</h5>
+    <p><b>Proof:</b> {{ block.proof }}</p>
+    <p><b>Хэш:</b> {{ block.previous_hash }}</p>
+    {% if block.transactions %}
+    <p><b>Транзакции:</b></p>
+    <ul class="list-group list-group-flush">
+        {% for tx in block.transactions %}
+        <li class="list-group-item d-flex align-items-center gap-3 bg-transparent text-light border-0">
+            <img src="https://robohash.org/{{ tx.sender }}?size=40x40" alt="{{ tx.sender }}"
+                class="rounded-circle border border-info">
+            <div>
+                <strong>{{ tx.sender }}</strong> ➡ <strong>{{ tx.receiver }}</strong><br>
+                <span class="text-info">Сумма: {{ tx.amount }}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}
+
+
+
+
+<h1>Цепочка блоков</h1>
+{% for block in chain %}
+<hr>
+<p><b>Блок #{{ block.index }}</b></p>
+<p>Proof: {{ block.proof }}</p>
+<p>Хэш предыдущего блока: {{ block.previous_hash }}</p>
+<p>Транзакции:</p>
+<ul>
+    {% for tx in block.transactions %}
+    <li>{{ tx.sender }} ➡ {{ tx.receiver }}: {{ tx.amount }}</li>
+    {% endfor %}
+</ul>
+{% endfor %}

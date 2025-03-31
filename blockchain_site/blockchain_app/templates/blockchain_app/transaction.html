@@ -1,0 +1,36 @@
+{% extends 'blockchain_app/base.html' %}
+{% block title %}Добавить транзакцию{% endblock %}
+{% block content %}
+<h2>Новая транзакция</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">Отправитель</label>
+        <input class="form-control" type="text" name="sender" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Получатель</label>
+        <input class="form-control" type="text" name="receiver" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Сумма</label>
+        <input class="form-control" type="number" name="amount" required>
+    </div>
+    <button class="btn btn-glow" type="submit">Добавить</button>
+</form>
+{% endblock %}
+
+
+
+
+<h1>Добавить транзакцию</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>Отправитель:</label><br>
+    <input type="text" name="sender"><br>
+    <label>Получатель:</label><br>
+    <input type="text" name="receiver"><br>
+    <label>Сумма:</label><br>
+    <input type="number" name="amount"><br><br>
+    <button type="submit">Добавить</button>
+</form>

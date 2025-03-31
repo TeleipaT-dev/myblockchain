@@ -1,0 +1,9 @@
+{% extends 'blockchain_app/base.html' %}
+{% block title %}Добыть блок{% endblock %}
+{% block content %}
+<h2>Добыча нового блока</h2>
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-glow" type="submit">🚀 Добыть блок</button>
+</form>
+{% endblock %}
